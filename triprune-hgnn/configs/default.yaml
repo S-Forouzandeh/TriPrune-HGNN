@@ -1,0 +1,31 @@
+# Default configuration for TriPrune-HGNN.
+# Hyperparameter values follow Section 5 ("Implementation and protocol").
+
+synthetic:
+  n: 400
+  K: 3
+  density: 0.05
+  skew: 1.5
+  num_classes: 5
+  feature_dim: 16
+
+train:
+  hidden: 32            # d_hidden for all neural controllers
+  layers: 2
+  eps: 0.01             # gate smoothing (Proposition 1)
+  tau0: 0.5             # base contrastive temperature
+  alpha: 1.0            # topology-change sensitivity
+  dropout: 0.3
+  epochs: 200
+  lr: 0.001
+  weight_decay: 0.0005
+  eta_inner: 0.001      # inner learning rate
+  eta_meta: 0.01        # meta learning rate
+  delta: 0.00001        # finite-difference perturbation (Proposition 2)
+  meta_period: 5        # Delta_meta
+  beta_hcp0: 0.1        # initial HCP-regulariser weight
+  hcp_decay_frac: 0.5   # decay to 0 over first 50% of training
+  grad_clip: 10.0       # gradient clipping (Assumption 2, G=10)
+  eval_every: 20
+  use_meta: true
+  verbose: true
